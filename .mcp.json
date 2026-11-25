@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "gtm-tool-finder": {
+      "command": "uvx",
+      "args": ["gtm-tool-finder-mcp"]
+    }
+  }
+}
