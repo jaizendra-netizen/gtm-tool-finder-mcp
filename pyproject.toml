@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gtm-tool-finder-mcp"
+version = "1.0.0"
+description = "MCP server (stdio) to search the OneGTMLab GTM tool directory: tool API reviews, comparisons and glossary terms. Offline, no API key."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Jainendra Ojha", email = "account@onegtmlab.dev"}]
+keywords = ["mcp", "model-context-protocol", "gtm", "sales tools", "revops", "lead enrichment", "tool comparison"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Topic :: Office/Business",
+]
+dependencies = ["mcp>=1.2.0,<2"]
+
+[project.urls]
+Homepage = "https://www.onegtmlab.dev"
+Documentation = "https://www.onegtmlab.dev/tool-directory"
+Source = "https://github.com/jaizendra-netizen/gtm-tool-finder-mcp"
+
+[project.scripts]
+gtm-tool-finder-mcp = "gtm_tool_finder_mcp.server:main"
+
+[tool.setuptools.package-data]
+gtm_tool_finder_mcp = ["data.json"]

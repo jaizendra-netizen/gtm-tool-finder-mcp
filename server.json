@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jaizendra-netizen/gtm-tool-finder-mcp",
+  "description": "Search the OneGTMLab GTM tool directory: tool API reviews, comparisons and glossary terms. Offline, no API key.",
+  "repository": {
+    "url": "https://github.com/jaizendra-netizen/gtm-tool-finder-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "websiteUrl": "https://www.onegtmlab.dev/tool-directory",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "gtm-tool-finder-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

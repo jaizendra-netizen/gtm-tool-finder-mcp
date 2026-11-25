@@ -1,0 +1,64 @@
+# gtm-tool-finder-mcp
+
+<!-- mcp-name: io.github.jaizendra-netizen/gtm-tool-finder-mcp -->
+
+A [Model Context Protocol](https://modelcontextprotocol.io) server that lets an AI assistant search the [OneGTMLab](https://www.onegtmlab.dev) GTM tool directory: API reviews for 66 sales and marketing tools (pricing, rate limits, keys, MCP support), 99 head-to-head comparisons such as Apollo vs Clay, and 110 plain-English GTM glossary terms.
+
+- Homepage: https://www.onegtmlab.dev
+- Docs and the full directory: https://www.onegtmlab.dev/tool-directory
+- Offline: the directory index ships inside the package. No API key, no network calls.
+- License: MIT
+
+## Tools
+
+| Tool | What it does |
+|---|---|
+| `search_tools(query, kind="", limit=10)` | Keyword search over names and descriptions. `kind` is one of Tool, Category, Comparison, Glossary. |
+| `get_tool(name)` | One entry by name (exact match first, then closest partial match). |
+| `list_categories()` | Page kinds with counts, plus every Category page. |
+
+Every result carries the entry name, kind, a link to the page on onegtmlab.dev, and a short description.
+
+## Install
+
+```bash
+pip install gtm-tool-finder-mcp
+```
+
+Or run it without installing:
+
+```bash
+uvx gtm-tool-finder-mcp
+```
+
+## Use it in an MCP client
+
+Claude Desktop, Cursor, Windsurf and other stdio clients take the same block:
+
+```json
+{
+  "mcpServers": {
+    "gtm-tool-finder": {
+      "command": "uvx",
+      "args": ["gtm-tool-finder-mcp"]
+    }
+  }
+}
+```
+
+Claude Code:
+
+```bash
+claude mcp add gtm-tool-finder -- uvx gtm-tool-finder-mcp
+```
+
+Then ask: "Compare Apollo and Clay for enrichment" or "What are the rate limits on HubSpot's API?" and the assistant will search the directory and link the matching OneGTMLab pages.
+
+## Develop
+
+```bash
+pip install -e .
+python -m gtm_tool_finder_mcp.server   # speaks MCP over stdio
+```
+
+Built by [OneGTMLab](https://www.onegtmlab.dev), a GTM engineering team (outbound systems, lead research, CRM and workflow automation for B2B teams).
