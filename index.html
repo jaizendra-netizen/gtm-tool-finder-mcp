@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gtm-tool-finder-mcp | OneGTMLab</title>
+<meta name="description" content="MCP server to search the OneGTMLab GTM tool directory: tool API reviews, comparisons, glossary. Offline, no API key.">
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1b1f23}pre{background:#f6f8fa;padding:1rem;overflow:auto}code{background:#f6f8fa;padding:.1em .3em}table{border-collapse:collapse}td,th{border:1px solid #d0d7de;padding:.3rem .6rem}</style>
+</head><body>
+<main>
+<h1 dir="auto">gtm-tool-finder-mcp</h1>
+
+<p dir="auto">A <a href="https://modelcontextprotocol.io">Model Context Protocol</a> server that lets an AI assistant search the <a href="https://www.onegtmlab.dev">OneGTMLab</a> GTM tool directory: API reviews for 66 sales and marketing tools (pricing, rate limits, keys, MCP support), 99 head-to-head comparisons such as Apollo vs Clay, and 110 plain-English GTM glossary terms.</p>
+<ul dir="auto">
+<li>Homepage: <a href="https://www.onegtmlab.dev">https://www.onegtmlab.dev</a></li>
+<li>Docs and the full directory: <a href="https://www.onegtmlab.dev/tool-directory">https://www.onegtmlab.dev/tool-directory</a></li>
+<li>Offline: the directory index ships inside the package. No API key, no network calls.</li>
+<li>License: MIT</li>
+</ul>
+<h2 dir="auto">Tools</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">search_tools(query, kind="", limit=10)</code></td>
+<td>Keyword search over names and descriptions. <code class="notranslate">kind</code> is one of Tool, Category, Comparison, Glossary.</td>
+</tr>
+<tr>
+<td><code class="notranslate">get_tool(name)</code></td>
+<td>One entry by name (exact match first, then closest partial match).</td>
+</tr>
+<tr>
+<td><code class="notranslate">list_categories()</code></td>
+<td>Page kinds with counts, plus every Category page.</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Every result carries the entry name, kind, a link to the page on onegtmlab.dev, and a short description.</p>
+<h2 dir="auto">Install</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">pip install gtm-tool-finder-mcp</pre></div>
+<p dir="auto">Or run it without installing:</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">uvx gtm-tool-finder-mcp</pre></div>
+<h2 dir="auto">Use it in an MCP client</h2>
+<p dir="auto">Claude Desktop, Cursor, Windsurf and other stdio clients take the same block:</p>
+<div class="highlight highlight-source-json" dir="auto"><pre class="notranslate">{
+  <span class="pl-ent">"mcpServers"</span>: {
+    <span class="pl-ent">"gtm-tool-finder"</span>: {
+      <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>uvx<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"args"</span>: [<span class="pl-s"><span class="pl-pds">"</span>gtm-tool-finder-mcp<span class="pl-pds">"</span></span>]
+    }
+  }
+}</pre></div>
+<p dir="auto">Claude Code:</p>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">claude mcp add gtm-tool-finder -- uvx gtm-tool-finder-mcp</pre></div>
+<p dir="auto">Then ask: "Compare Apollo and Clay for enrichment" or "What are the rate limits on HubSpot's API?" and the assistant will search the directory and link the matching OneGTMLab pages.</p>
+<h2 dir="auto">Develop</h2>
+<div class="highlight highlight-source-shell" dir="auto"><pre class="notranslate">pip install -e <span class="pl-c1">.</span>
+python -m gtm_tool_finder_mcp.server   <span class="pl-c"><span class="pl-c">#</span> speaks MCP over stdio</span></pre></div>
+<p dir="auto">Built by <a href="https://www.onegtmlab.dev">OneGTMLab</a>, a GTM engineering team (outbound systems, lead research, CRM and workflow automation for B2B teams).</p>
+</main>
+<footer><p>Source: <a href="https://github.com/jaizendra-netizen/gtm-tool-finder-mcp">github.com/jaizendra-netizen/gtm-tool-finder-mcp</a>. Maintained by <a href="https://www.onegtmlab.dev">OneGTMLab</a>.</p></footer>
+</body></html>

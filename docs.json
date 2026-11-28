@@ -1,0 +1,10 @@
+{
+  "name": "gtm-tool-finder-mcp",
+  "description": "MCP server to search the OneGTMLab GTM tool directory: tool API reviews, comparisons, glossary. Offline, no API key.",
+  "sidebar": [
+    {
+      "title": "Overview",
+      "href": "/"
+    }
+  ]
+}
